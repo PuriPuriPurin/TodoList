@@ -1,4 +1,5 @@
 import { memo, useContext, VFC } from 'react';
+import { Button } from 'react-bootstrap';
 import { AppContext } from './appContext';
 
 const EmptyButton: VFC = () => {
@@ -8,12 +9,13 @@ const EmptyButton: VFC = () => {
   };
 
   return (
-    <button
+    <Button
       type='button'
+      variant='danger'
       onClick={handleOnEmpty}
     >
       ゴミ箱を空にする
-    </button>
+    </Button>
   );
 };
 

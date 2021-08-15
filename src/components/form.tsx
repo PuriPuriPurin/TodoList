@@ -1,4 +1,5 @@
 import { memo, useContext } from 'react';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { AppContext } from './appContext';
 
 const Form: React.VFC = () => {
@@ -17,18 +18,22 @@ const Form: React.VFC = () => {
 
   return (
     <form onSubmit={handleOnSubmit}>
-      <input
-        type='text'
-        value={state.text}
-        disabled={state.filter === 'checked'}
-        onChange={handleOnChange}
-      />
-      <input
-        type='submit'
-        value='追加'
-        disabled={state.filter === 'checked'}
-        onChange={handleOnSubmit}
-      />
+      <InputGroup>
+        <FormControl
+          placeholder='やるべきことを入力'
+          value={state.text}
+          disabled={state.filter === 'checked'}
+          onChange={handleOnChange}
+        />
+        <Button
+          variant='outline-primary'
+          type='submit'
+          disabled={state.filter === 'checked'}
+          onChange={handleOnSubmit}
+        >
+          追加
+        </Button>
+      </InputGroup>
     </form>
   );
 };

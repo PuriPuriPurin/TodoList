@@ -1,4 +1,5 @@
 import { useContext, memo, VFC } from 'react';
+import { Form } from 'react-bootstrap';
 import { AppContext, Filter } from './appContext';
 
 const Selector: VFC = () => {
@@ -8,7 +9,7 @@ const Selector: VFC = () => {
   };
 
   return (
-    <select
+    <Form.Select
       defaultValue='all'
       onChange={handleOnFilter}
     >
@@ -16,7 +17,7 @@ const Selector: VFC = () => {
       <option value='checked'>完了したタスク</option>
       <option value='unchecked'>未完了のタスク</option>
       <option value='removed'>削除済みのタスク</option>
-    </select>
+    </Form.Select>
   );
 };
 

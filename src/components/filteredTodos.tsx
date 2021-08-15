@@ -1,4 +1,7 @@
 import { memo, useContext, VFC } from 'react';
+import {
+  Button, FormControl, InputGroup,
+} from 'react-bootstrap';
 import { AppContext } from './appContext';
 
 const FilteredTodos: VFC = () => {
@@ -31,30 +34,30 @@ const FilteredTodos: VFC = () => {
   });
 
   return (
-    <ul>
+    <div className='mt-3'>
       {filteredTodos.map((todo) => (
-        <li key={todo.id}>
-          <input
-            type='checkbox'
-            disabled={todo.removed}
-            checked={todo.checked}
-            onChange={() => handleOnCheck(todo.id, todo.checked)}
-          />
-          <input
-            type='text'
-            disabled={todo.checked || todo.removed}
-            value={todo.value}
-            onChange={(e) => handleOnEdit(todo.id, e.target.value)}
-          />
-          <button
-            type='button'
-            onClick={() => handleOnRemove(todo.id, todo.removed)}
-          >
-            {todo.removed ? '復元' : '削除'}
-          </button>
-        </li>
+        <div key={todo.id}>
+          <InputGroup className='mb-2'>
+            <InputGroup.Checkbox
+              disabled={todo.removed}
+              checked={todo.checked}
+              onChange={() => handleOnCheck(todo.id, todo.checked)}
+            />
+            <FormControl
+              disabled={todo.checked || todo.removed}
+              value={todo.value}
+              onChange={(e) => handleOnEdit(todo.id, e.target.value)}
+            />
+            <Button
+              onClick={() => handleOnRemove(todo.id, todo.removed)}
+              variant='outline-secondary'
+            >
+              {todo.removed ? '復元' : '削除'}
+            </Button>
+          </InputGroup>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

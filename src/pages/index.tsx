@@ -1,7 +1,9 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 import { useEffect, useReducer } from 'react';
 import localforage from 'localforage';
+import {
+  Col, Container, Navbar, Row,
+} from 'react-bootstrap';
 import {
   AppContext, State, Action, Todo,
 } from '../components/appContext';
@@ -111,15 +113,28 @@ const Home: NextPage = () => {
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <CommonHead />
-      <div>
-        <Selector />
-        {state.filter === 'removed' ? (
-          <EmptyButton />
-        ) : (
-          <Form />
-        )}
-        <FilteredTodos />
-      </div>
+      <Navbar bg='dark' variant='dark'>
+        <Container>
+          <Navbar.Brand>Simple Todo List</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Container className='mt-4'>
+        <Row>
+          <Col xs={12} sm={4}>
+            <Selector />
+          </Col>
+          <Col xs={12} sm={8}>
+            {state.filter === 'removed' ? (
+              <EmptyButton />
+            ) : (
+              <Form />
+            )}
+          </Col>
+        </Row>
+        <Row>
+          <FilteredTodos />
+        </Row>
+      </Container>
     </AppContext.Provider>
   );
 };
