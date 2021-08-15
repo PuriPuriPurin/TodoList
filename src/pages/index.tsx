@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
+import localforage from 'localforage';
 import {
   AppContext, State, Action, Todo,
 } from '../components/appContext';
@@ -63,6 +64,9 @@ const reducer = (state: State, action: Action): State => {
       const newTodos = state.todos.filter((todo) => !todo.removed);
       return { ...state, todos: newTodos };
     }
+    case 'restore': {
+      return { ...state, todos: action.todos, text: '' };
+    }
     default:
       return state;
   }
@@ -74,15 +78,39 @@ const initialState: State = {
   filter: 'all',
 };
 
+const storage = localforage.createInstance({
+  driver: localforage.LOCALSTORAGE,
+  name: 'todoList',
+  storeName: 'todoItems',
+  version: 1,
+});
+
 const Home: NextPage = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    // localstrage から読み込む
+    storage.getItem<Todo[]>('todoItems')
+      .then((value) => {
+        if (value) {
+          dispatch({ type: 'restore', todos: value });
+        }
+      })
+      .catch((e) => {
+        throw new Error(e);
+      });
+  }, []);
+
+  useEffect(() => {
+    storage.setItem<Todo[]>('todoItems', state.todos)
+      .catch((e) => {
+        throw new Error(e);
+      });
+  }, [state.todos]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <CommonHead />
-      <Head>
-        <title>NEXT.JS app template</title>
-      </Head>
       <div>
         <Selector />
         {state.filter === 'removed' ? (

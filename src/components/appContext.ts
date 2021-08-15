@@ -9,7 +9,8 @@ export type Action =
   | {type: 'empty'}
   | {type: 'edit', id: number, value: string}
   | {type: 'check', id: number, checked: boolean}
-  | {type: 'remove', id: number, removed: boolean};
+  | {type: 'remove', id: number, removed: boolean}
+  | {type: 'restore', todos: Todo[]};
 
 export type Todo = {
   value: string;

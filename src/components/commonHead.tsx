@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 const CommonHead = (): JSX.Element => (
   <Head>
-    <title key='title'>Default Title</title>
+    <title key='title'>Todo List</title>
     {/* レスポンシブ対応（できてるの？） */}
     <meta name='viewport' content='width=device-width,initial-scale=1.0' />
     {/* 拡大をできなくする場合 */}
