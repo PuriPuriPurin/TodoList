@@ -113,28 +113,32 @@ const Home: NextPage = () => {
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <CommonHead />
-      <Navbar bg='dark' variant='dark'>
-        <Container>
-          <Navbar.Brand>Simple Todo List</Navbar.Brand>
+      <header>
+        <Navbar bg='dark' variant='dark' fixed='top'>
+          <Container>
+            <Navbar.Brand>Simple Todo List</Navbar.Brand>
+          </Container>
+        </Navbar>
+      </header>
+      <main>
+        <Container className='mt-4'>
+          <Row>
+            <Col xs={12} sm={4}>
+              <Selector />
+            </Col>
+            <Col xs={12} sm={8}>
+              {state.filter === 'removed' ? (
+                <EmptyButton />
+              ) : (
+                <Form />
+              )}
+            </Col>
+          </Row>
+          <Row>
+            <FilteredTodos />
+          </Row>
         </Container>
-      </Navbar>
-      <Container className='mt-4'>
-        <Row>
-          <Col xs={12} sm={4}>
-            <Selector />
-          </Col>
-          <Col xs={12} sm={8}>
-            {state.filter === 'removed' ? (
-              <EmptyButton />
-            ) : (
-              <Form />
-            )}
-          </Col>
-        </Row>
-        <Row>
-          <FilteredTodos />
-        </Row>
-      </Container>
+      </main>
     </AppContext.Provider>
   );
 };
