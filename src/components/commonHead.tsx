@@ -25,11 +25,11 @@ const CommonHead = (): JSX.Element => {
       <meta property='og:url' content={url} />
       <meta property='og:title' content={title} />
       <meta property='og:site_name' content={title} />
-      <meta name='og:description' content='プログラム初学者がよく作りがちなよくあるTodoリストです。' />
-      <meta name='og:type' content='website' />
-      <meta name='og:image' content='/TodoList/ogp.png' />
-      <meta name='og:image:width' content='1200' />
-      <meta name='og:image:height' content='630' />
+      <meta property='og:description' content='プログラム初学者がよく作りがちなよくあるTodoリストです。' />
+      <meta property='og:type' content='website' />
+      <meta property='og:image' content='/TodoList/ogp.png' />
+      <meta property='og:image:width' content='1200' />
+      <meta property='og:image:height' content='630' />
     </Head>
   );
 };
