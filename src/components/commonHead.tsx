@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 const CommonHead = (): JSX.Element => {
   const title = 'Todo List';
-  const url = 'https://puripuripurin.github.io/TodoList/';
+  const url = 'https://puripuripurin.github.io/TodoList';
   return (
     <Head>
       <title key='title'>{title}</title>
@@ -27,7 +27,7 @@ const CommonHead = (): JSX.Element => {
       <meta property='og:site_name' content={title} />
       <meta property='og:description' content='プログラム初学者がよく作りがちなよくあるTodoリストです。' />
       <meta property='og:type' content='website' />
-      <meta property='og:image' content='/TodoList/ogp.png' />
+      <meta property='og:image' content={`${url}/ogp.png`} />
       <meta property='og:image:width' content='1200' />
       <meta property='og:image:height' content='630' />
     </Head>
