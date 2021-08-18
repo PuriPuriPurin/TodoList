@@ -17,7 +17,7 @@ const CommonHead = (): JSX.Element => {
       {/* 文字コード指定（日本語サイトで必須） */}
       <meta charSet='utf-8' />
       {/* favicon の設定 */}
-      {/* <link rel='icon' href='/favicon.ico' /> */}
+      <link rel='icon' href='/favicon.ico' />
       {/* 検索結果に表示される説明文 */}
       {/* <meta name='description' key='description' content='説明。' /> */}
 
