@@ -17,7 +17,7 @@ const CommonHead = (): JSX.Element => {
       {/* 文字コード指定（日本語サイトで必須） */}
       <meta charSet='utf-8' />
       {/* favicon の設定 */}
-      <link rel='icon' href='/favicon.ico' />
+      <link rel='icon' href='/TodoList/favicon.ico' />
       {/* 検索結果に表示される説明文 */}
       {/* <meta name='description' key='description' content='説明。' /> */}
 
@@ -27,7 +27,7 @@ const CommonHead = (): JSX.Element => {
       <meta property='og:site_name' content={title} />
       <meta name='og:description' content='プログラム初学者がよく作りがちなよくあるTodoリストです。' />
       <meta name='og:type' content='website' />
-      <meta name='og:image' content='/ogp.png' />
+      <meta name='og:image' content='/TodoList/ogp.png' />
       <meta name='og:image:width' content='1200' />
       <meta name='og:image:height' content='630' />
     </Head>
